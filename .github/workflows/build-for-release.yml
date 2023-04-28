@@ -53,10 +53,10 @@ jobs:
         run: |
           cargo build
 
-          SHELLS=""
+          SHELLS="bash elvish fish powershell zsh"
 
           mkdir completions
-          for shell in SHELLS; do
+          for shell in $SHELLS; do
               cargo run -- gen-completions --shell $shell --to completions
 
           zip -r completions.zip completions
